@@ -1,0 +1,44 @@
+/*
+NAME    :fajas ahmed
+CLASS   :S7
+ROLL NO :09
+AIM     :Program to create the process architectures and apply sleep() system call.
+*/
+
+//PROGRAM:
+
+#include<stdio.h>
+main()
+{
+int p,p1;
+p1=fork();
+if(p1==0)
+{
+printf("Child side\n");
+printf("P:%d\n",getppid());
+printf("P1:%d\n",getpid());
+printf("Parent of P1:%d\n",getppid());
+for(;;);
+}
+else
+{
+printf("Parent side\n");
+printf("P:%d\n",getpid());
+printf("Sleeping...\n");
+sleep(1);
+printf("After sleep\n");
+printf("Parent of P:%d\n",getppid());
+}
+}
+
+/*OUTPUT:
+
+Parent side
+P:33026
+Sleeping...
+Child side
+P:33026
+P1:33027
+Parent of P1:33026
+After sleep
+Parent of P:18200*/
